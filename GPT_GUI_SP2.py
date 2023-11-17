@@ -324,7 +324,12 @@ def get_result():
 
 
     # Update the result label
-    result_label.config(text="Result: " + str(level5_result+level6_result))
+    result_string = level1_result+level3_result+level4_result+level5_result+level6_result
+    seen = set()
+    result_string = [x for x in result_string if not (x in seen or seen.add(x)) and x and not x.startswith("#")]
+    result_string = str(result_string)
+    print(result_string)
+    result_label.config(text="Result: " + result_string)
     result_save = result
     first = []
     second = []
